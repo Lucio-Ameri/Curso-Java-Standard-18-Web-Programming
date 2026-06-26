@@ -8,7 +8,7 @@
     <groupId>com.lucio</groupId>
     <artifactId>curso-java-standard-18-web-programming</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>Curso Java Standard 18 Web Programming</name>
     <description>Proyecto Java Standard 17 con Maven</description>
@@ -53,6 +53,14 @@
             <artifactId>junit-jupiter</artifactId>
             <version>${junit.jupiter.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <!-- API de Servlets para Tomcat 10 o superior -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.1</version>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>
@@ -105,6 +113,16 @@
                 <configuration>
                     <!-- Cambiar si tu clase principal tiene otro nombre o paquete -->
                     <mainClass>Main</mainClass>
+                </configuration>
+            </plugin>
+
+            <!-- Generación del archivo WAR para Tomcat -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.4.0</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
 
